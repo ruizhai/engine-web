@@ -26,3 +26,7 @@ spring/static
 spring/.settings
 spring/.classpath
 spring/.project
+
+dist/static
+dist/src/*.jar
+dist/log/*

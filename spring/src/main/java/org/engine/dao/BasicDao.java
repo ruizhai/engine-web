@@ -1,4 +1,4 @@
-package org.zr.web.dao;
+package org.engine.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.dbcp.BasicDataSource;
-import org.zr.web.utils.PropertiesUtil;
+import org.engine.utils.PropertiesUtil;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;

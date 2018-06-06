@@ -1,28 +1,31 @@
-package org.zr.web.controllers.table;
+package org.engine.controllers.table;
 
 import java.io.IOException;
 import java.util.Map;
 
+import org.engine.modules.Result;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.zr.web.modules.Result;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.collect.Maps;
 
+
 @RestController
 @RequestMapping(value = "/api/table", produces = "application/json; charset=utf-8")
-public class MapAttr extends BasicTable {
+public class DataCollect extends BasicTable {
 	
-	private final static String pk = "ID";
+	private final static String pk = "TASK_ID";
 	
-	private final static String tableName = "bi_map_attr";
+	private final static String tableName = "bi_map_data_collect";
 	
-	private final static String[] showField = {"SRC_FIELD_NM", "TGT_FIELD_NM"};
+	private final static String[] showField = {"TASK_NM","TABLE_CN_NM","COLLECT_MODE"};
 	
-	private final static String[] fieldCnNm = {"来源字段名称", "目标字段名称"};
+	private final static String[] fieldCnNm = {"任务名","来源表名","采集方式"};
+
+	private final static String[] deleteTables = {"BI_MAP_ATTR", "BI_MAP_ACT", "BI_MAP_CLEAN", "BI_MAP_REL", "BI_MAP_ENT"};
 
 	@Override
 	@RequestMapping(value = "/" + tableName + "/get", method = RequestMethod.POST)
@@ -40,6 +43,10 @@ public class MapAttr extends BasicTable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		if(null == paramMap.get("COLLECTSQL")) {
+			String sql = "select * from " + paramMap.get("TABLE_NM");
+			paramMap.put("COLLECTSQL", sql);
+		}
 		String id = insertRs(tableName, paramMap, pk);
 		Result result = new Result();
 		result.putData("id", id);
@@ -50,7 +57,7 @@ public class MapAttr extends BasicTable {
 	@Override
 	@RequestMapping(value = "/" + tableName + "/delete", method = RequestMethod.POST)
 	public Result delete(@RequestBody String param) {
-		delRs(tableName, pk, null, null, param);
+		delRs(tableName, pk, deleteTables, null, param);
 		return null;
 	}
 
@@ -63,6 +70,10 @@ public class MapAttr extends BasicTable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		if(null == paramMap.get("COLLECTSQL")) {
+			String sql = "select * from " + paramMap.get("TABLE_NM");
+			paramMap.put("COLLECTSQL", sql);
+		}
 		updateRs(tableName, paramMap, pk);
 		Result result = new Result();
 		result.setCode("0000");
@@ -74,5 +85,5 @@ public class MapAttr extends BasicTable {
 	public Result form(@RequestBody String param) {
 		return formRs(tableName, pk, param);
 	}
-
+	
 }
