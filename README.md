@@ -1,5 +1,9 @@
 spring boot + ant design pro 
 
+需要 jdk1.8 mavne node
+
+web 目录为antd pro 需npm install
+
 打包方式
 
 sh make.sh

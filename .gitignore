@@ -30,3 +30,4 @@ spring/.project
 dist/static
 dist/src/*.jar
 dist/log/*
+dist/db/*
