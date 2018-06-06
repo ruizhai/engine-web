@@ -1,0 +1,28 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+web/node_modules
+# roadhog-api-doc ignore
+web/src/utils/request-temp.js
+_roadhog-api-doc
+
+# production
+web/dist
+web/vscode
+
+# misc
+.DS_Store
+web/npm-debug.log*
+web/yarn-error.log
+
+web/coverage
+web/yarn.lock
+web/package-lock.json
+web/jsconfig.json
+web/.vscode/settings.json
+
+spring/target
+spring/static
+spring/.settings
+spring/.classpath
+spring/.project
