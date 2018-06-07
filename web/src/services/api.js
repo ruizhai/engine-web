@@ -40,10 +40,6 @@ export async function fakeSubmitForm(params) {
   });
 }
 
-export async function fakeChartData() {
-  return request('/api/fake_chart_data');
-}
-
 export async function queryTags() {
   return request('/api/tags');
 }
@@ -79,6 +75,12 @@ export async function queryNotices() {
 }
 
 //my
+
+export async function fakeChartData() {
+  return request('/api/chart/test', {
+    method: 'POST',
+  });
+}
 
 export async function queryTable(params) {
   const {current, pageSize, tableName, filter} = params;

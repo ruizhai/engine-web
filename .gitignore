@@ -30,4 +30,5 @@ spring/.project
 dist/static
 dist/src/*.jar
 dist/log/*
-dist/db/*
+dist/db/nohup.out
+dist/db/test.h2.db

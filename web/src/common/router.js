@@ -72,6 +72,9 @@ export const getRouterData = app => {
     '/': {
       component: dynamicWrapper(app, ['user', 'login'], () => import('../layouts/BasicLayout')),
     },
+    '/home-page': {
+      component: dynamicWrapper(app, ['chart'], () => import('../routes/HomePage/HomePage')),
+    },
     '/data-load/set-load': {
       name: '数据加载',
       component: dynamicWrapper(app, ['table'], () => import('../routes/DataLoad/SetLoad')),
